@@ -1,9 +1,9 @@
 {
   "name": "giniee",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Geniee is a command-line tool designed to automate the initial setup of JavaScript/TypeScript projects. It streamlines the creation of environment and configuration files, directory structures, and dependencies, while offering customization options such as template selection and Docker integration.",
   "bin": {
-    "giniee": "./index.sh"
+    "giniee": "./geniee.js"
   },
   "scripts": {
     "test": "echo \"No tests specified\" && exit 0"
