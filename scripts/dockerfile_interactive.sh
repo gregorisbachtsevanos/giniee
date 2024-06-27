@@ -1,3 +1,5 @@
+#!/bin/bash
+
 read -p "Would you like to include a Dockerfile in the project? (Y/n): " include_dockerfile
 include_dockerfile=${include_dockerfile:-Y}
 

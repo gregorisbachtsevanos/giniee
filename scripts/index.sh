@@ -43,17 +43,17 @@ execute_script() {
 sh_files=$(ls *.sh 2>/dev/null)
 
 # Execute each script
-execute_script "$SCRIPT_DIR/setup_vite_project.sh" "setup_vite_project.sh"
-execute_script "$SCRIPT_DIR/delete_unnecessary_files.sh" "delete_unnecessary_files.sh"
-execute_script "$SCRIPT_DIR/install_dependencies.sh" "install_dependencies.sh"
-execute_script "$SCRIPT_DIR/create_env_files.sh" "create_env_files.sh"
-execute_script "$SCRIPT_DIR/create_config_files.sh" "create_config_files.sh"
-execute_script "$SCRIPT_DIR/create_directory_structure.sh" "create_directory_structure.sh"
-execute_script "$SCRIPT_DIR/create_store_and_api_files.sh" "create_store_and_api_files.sh"
-execute_script "$SCRIPT_DIR/dockerfile_interactive.sh" "dockerfile_interactive.sh"
-execute_script "$SCRIPT_DIR/add_scripts_to_packagejson.sh" "add_scripts_to_packagejson.sh"
+execute_script "setup_vite_project.sh" "setup_vite_project.sh"
+execute_script "delete_unnecessary_files.sh" "delete_unnecessary_files.sh"
+execute_script "install_dependencies.sh" "install_dependencies.sh"
+execute_script "create_env_files.sh" "create_env_files.sh"
+execute_script "create_config_files.sh" "create_config_files.sh"
+execute_script "create_directory_structure.sh" "create_directory_structure.sh"
+execute_script "create_store_and_api_files.sh" "create_store_and_api_files.sh"
+execute_script "dockerfile_interactive.sh" "dockerfile_interactive.sh"
+execute_script "add_scripts_to_packagejson.sh" "add_scripts_to_packagejson.sh"
 if [ -n "$sh_files" ]; then
-  execute_script "$SCRIPT_DIR/clean_up.sh" "clean_up.sh"
+  execute_script "clean_up.sh" "clean_up.sh"
 fi
 
 if [ "$SETUP_SUCCESS" = true ]; then
