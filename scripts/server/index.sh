@@ -6,10 +6,6 @@ source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../utils && pwd )/helpers
 # Get the absolute path to the giniee root directory
 GINIEE_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../../ && pwd )"
 
-# # Variable to track setup status
-# SETUP_SUCCESS=true
-# ERROR_LOG=""
-
 # Execute each script with error handling
 execute_script() {
   local script_name="$1"
