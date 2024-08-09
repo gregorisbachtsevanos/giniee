@@ -1,35 +1,19 @@
 #!/bin/bash
 
-# ANSI color codes
-GREEN='\033[0;32m'
-LIGHT_GREEN='\033[38;5;120m'
-RED='\033[0;31m'
-LIGHT_RED='\033[38;5;203m'
-BLUE='\033[0;36m'
-PURPLE='\033[38;5;92m'
-YELLOW='\033[38;5;227m'
-NC='\033[0m'
-
-# Function to display messages in green color
-print_success() {
-  echo -e "${GREEN}$1${NC}"
-}
-
-# Function to display messages in red color
-print_error() {
-  echo -e "${RED}$1${NC}"
-}
-
-print_colored() {
-  local color=$1
-  local message=$2
-  echo -e "${color}${message}${NC}"
-}
+# Source the utility functions
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../utils && pwd )/helpers.sh"
 
 # Prompt for project name
 read -p "Enter the project name: " PROJECT_NAME
 if [ -z "$PROJECT_NAME" ]; then
   print_error "Project name cannot be empty."
+  exit 1
+fi
+
+# Create the new project directory
+mkdir "$PROJECT_NAME"
+if [ $? -ne 0 ]; then
+  print_error "Failed to create project directory '$PROJECT_NAME'."
   exit 1
 fi
 
@@ -77,11 +61,12 @@ PS3="Select a variant (enter number): "
 select LANGUAGE in "$(print_colored "$BLUE" "TypeScript")" "$(print_colored "$YELLOW" "JavaScript")"; do
   case "$LANGUAGE" in
     "$(print_colored "$BLUE" "TypeScript")")
-      USE_TS=true
+      TEMPLATE="$TEMPLATE-ts"
       break
       ;;
     "$(print_colored "$YELLOW" "JavaScript")")
-      USE_TS=false
+      print_colored "$RED" "Sorry, only TypeScript is supported. Defaulting to TypeScript."
+      TEMPLATE="$TEMPLATE-ts"
       break
       ;;
     *)
@@ -90,10 +75,10 @@ select LANGUAGE in "$(print_colored "$BLUE" "TypeScript")" "$(print_colored "$YE
   esac
 done
 
-
-# Step 1: Initialize a Vite project in the current directory
-print_success "Initializing Vite project..."
-if ! npx create-vite@latest . --template "$TEMPLATE" --$USE_TS; then
+# Step 1: Initialize a Vite project in the project directory
+print_success "Initializing Vite project in '$PROJECT_NAME'..."
+cd "$PROJECT_NAME" || { print_error "Failed to navigate to project directory '$PROJECT_NAME'."; exit 1; }
+if ! npx create-vite@latest . --template "$TEMPLATE"; then
   print_error "Failed to initialize Vite project."
   exit 1
 fi
