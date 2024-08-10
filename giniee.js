@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 // Absolute path to the script
-const script = path.join(__dirname, 'scripts/index.sh');
+const script = path.join(__dirname, './giniee.sh');
 
 // Check if the script exists
 if (!fs.existsSync(script)) {
