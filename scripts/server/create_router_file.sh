@@ -23,20 +23,20 @@ class UserRoutes {
     }
 
     initializeGetRoutes() {
-        this.router.get("/user/get-all-users", asyncRoutesErrorHandler(this.userController.getUsers));
-        this.router.get("/user/:userId", asyncRoutesErrorHandler(this.userController.getUserById));
+        this.router.get('/user/get-all-users', asyncRoutesErrorHandler(this.userController.getUsers));
+        this.router.get('/user/:userId', asyncRoutesErrorHandler(this.userController.getUserById));
     }
 
     initializePostRoutes() {
-        this.router.post("/user/add-user", asyncRoutesErrorHandler(this.userController.createUser));
+        this.router.post('/user/add-user', asyncRoutesErrorHandler(this.userController.createUser));
     }
 
     initializePutRoutes() {
-        this.router.patch("/user/edit-user/:userId", asyncRoutesErrorHandler(this.userController.editUser));
+        this.router.patch('/user/edit-user/:userId', asyncRoutesErrorHandler(this.userController.editUser));
     }
 
     initializeDeleteRoutes() {
-        this.router.delete("/user/delete-user/:userId", asyncRoutesErrorHandler(this.userController.deleteUser));
+        this.router.delete('/user/delete-user/:userId', asyncRoutesErrorHandler(this.userController.deleteUser));
     }
 
     getRouter() {
