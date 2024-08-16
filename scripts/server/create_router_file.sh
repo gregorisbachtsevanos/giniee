@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Create src/routes/userRouter.ts file
-ROUTER_TS_CONTENT="import { Router } from "express";
-import asyncErrorHandler from "../utils/asyncErrorHandler";
-import UserController from "../controllers/userController";
+ROUTER_TS_CONTENT="import { Router } from 'express';
+import asyncRoutesErrorHandler from '../middlewares/asyncRoutesErrorHandler';
+import UserController from '../controllers/userController';
 
 class UserRoutes {
     public router: Router;
@@ -23,20 +23,20 @@ class UserRoutes {
     }
 
     initializeGetRoutes() {
-        this.router.get("/user/get-all-users", asyncErrorHandler(this.userController.getUsers));
-        this.router.get("/user/:userId", asyncErrorHandler(this.userController.getUserById));
+        this.router.get("/user/get-all-users", asyncRoutesErrorHandler(this.userController.getUsers));
+        this.router.get("/user/:userId", asyncRoutesErrorHandler(this.userController.getUserById));
     }
 
     initializePostRoutes() {
-        this.router.post("/user/add-user", asyncErrorHandler(this.userController.createUser));
+        this.router.post("/user/add-user", asyncRoutesErrorHandler(this.userController.createUser));
     }
 
     initializePutRoutes() {
-        this.router.patch("/user/edit-user/:userId", asyncErrorHandler(this.userController.editUser));
+        this.router.patch("/user/edit-user/:userId", asyncRoutesErrorHandler(this.userController.editUser));
     }
 
     initializeDeleteRoutes() {
-        this.router.delete("/user/delete-user/:userId", asyncErrorHandler(this.userController.deleteUser));
+        this.router.delete("/user/delete-user/:userId", asyncRoutesErrorHandler(this.userController.deleteUser));
     }
 
     getRouter() {
