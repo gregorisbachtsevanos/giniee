@@ -6,6 +6,7 @@ source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../utils && pwd )/helpers
 # Get the absolute path to the giniee root directory
 GINIEE_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../../ && pwd )"
 
+
 # Execute each script with error handling
 execute_script() {
   local script_name="$1"
@@ -28,27 +29,28 @@ sh_files=$(ls *.sh 2>/dev/null)
 
 
 # Execute each script
-execute_script "$GINIEE_ROOT/init_project.sh" "init_project.sh"
-execute_script "$GINIEE_ROOT/create_env_files.sh" "create_env_files.sh"
-execute_script "$GINIEE_ROOT/create_directory_structure.sh" "create_directory_structure.sh"
-execute_script "$GINIEE_ROOT/install_dependencies.sh" "install_dependencies.sh"
-execute_script "$GINIEE_ROOT/create_www_file.sh" "create_www_file.sh"
-execute_script "$GINIEE_ROOT/create_controller_file.sh" "create_controller_file.sh"
-execute_script "$GINIEE_ROOT/create_handler_file.sh" "create_handler_file.sh"
-execute_script "$GINIEE_ROOT/create_service_file.sh" "create_service_file.sh"
-execute_script "$GINIEE_ROOT/create_model_file.sh" "create_model_file.sh"
-execute_script "$GINIEE_ROOT/create_dbConnection_file.sh" "create_dbConnection_file.sh"
-execute_script "$GINIEE_ROOT/create_middlewares_files.sh" "create_middlewares_files.sh"
-execute_script "$GINIEE_ROOT/create_app_file.sh" "create_app_file.sh"
-execute_script "$GINIEE_ROOT/create_type_file.sh" "create_type_file.sh"
-execute_script "$GINIEE_ROOT/create_config_file.sh" "create_config_file.sh"
-execute_script "$GINIEE_ROOT/create_project_config_files.sh" "create_project_config_files.sh"
+execute_script "$GINIEE_ROOT/scripts/init_project.sh" "init_project.sh"
+execute_script "$GINIEE_ROOT/scripts/create_env_files.sh" "create_env_files.sh"
+execute_script "$GINIEE_ROOT/scripts/create_directory_structure.sh" "create_directory_structure.sh"
+execute_script "$GINIEE_ROOT/scripts/install_dependencies.sh" "install_dependencies.sh"
+execute_script "$GINIEE_ROOT/scripts/create_www_file.sh" "create_www_file.sh"
+execute_script "$GINIEE_ROOT/scripts/create_router_file.sh" "create_router_file.sh"
+execute_script "$GINIEE_ROOT/scripts/create_controller_file.sh" "create_controller_file.sh"
+execute_script "$GINIEE_ROOT/scripts/create_handler_file.sh" "create_handler_file.sh"
+execute_script "$GINIEE_ROOT/scripts/create_service_file.sh" "create_service_file.sh"
+execute_script "$GINIEE_ROOT/scripts/create_model_file.sh" "create_model_file.sh"
+execute_script "$GINIEE_ROOT/scripts/create_dbConnection_file.sh" "create_dbConnection_file.sh"
+execute_script "$GINIEE_ROOT/scripts/create_middlewares_files.sh" "create_middlewares_files.sh"
+execute_script "$GINIEE_ROOT/scripts/create_app_file.sh" "create_app_file.sh"
+execute_script "$GINIEE_ROOT/scripts/create_type_file.sh" "create_type_file.sh"
+execute_script "$GINIEE_ROOT/scripts/create_config_file.sh" "create_config_file.sh"
+execute_script "$GINIEE_ROOT/scripts/create_project_config_files.sh" "create_project_config_files.sh"
 
-execute_script "$GINIEE_ROOT/dockerfile_interactive.sh" "dockerfile_interactive.sh"
-execute_script "$GINIEE_ROOT/add_scripts_to_packagejson.sh" "add_scripts_to_packagejson.sh"
+execute_script "$GINIEE_ROOT/scripts/dockerfile_interactive.sh" "dockerfile_interactive.sh"
+execute_script "$GINIEE_ROOT/scripts/add_scripts_to_packagejson.sh" "add_scripts_to_packagejson.sh"
 
 if [ -n "$sh_files" ]; then
-  execute_script "$GINIEE_ROOT/clean_up.sh" "clean_up.sh"
+  execute_script "$GINIEE_ROOT/scripts/clean_up.sh" "clean_up.sh"
 fi
 
 if [ "$SETUP_SUCCESS" = true ]; then
