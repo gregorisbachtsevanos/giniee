@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Create src/router/userRouter.ts file
+# Create src/routes/userRouter.ts file
 ROUTER_TS_CONTENT="import { Router } from "express";
 import asyncErrorHandler from "../utils/asyncErrorHandler";
 import UserController from "../controllers/userController";
@@ -46,4 +46,4 @@ class UserRoutes {
 
 export default UserRoutes;"
 
-echo "$ROUTER_TS_CONTENT" > "src/router/userRouter.ts"
+echo "$ROUTER_TS_CONTENT" > "src/routes/userRouter.ts"
