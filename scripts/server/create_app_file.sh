@@ -7,10 +7,10 @@ import express, { NextFunction, Request, Response } from 'express';
 import createError from 'http-errors';
 import logger from 'morgan';
 import connectDB from './config/db';
-import expressServerErrorHandler from './middleware/expressServerErrorHandler';
-import featureFlagMiddleware from './middleware/featureFlagMiddleware';
-import geoLocationMiddleware from './middleware/geoLocationMiddleware';
-import requestLoggingMiddleware from './middleware/requestLoggingMiddleware';
+import expressServerErrorHandler from './middlewares/expressServerErrorHandler';
+import featureFlagMiddleware from './middlewares/featureFlagMiddleware';
+import geoLocationMiddleware from './middlewares/geoLocationMiddleware';
+import requestLoggingMiddleware from './middlewares/requestLoggingMiddleware';
 import UserRoutes from './routes/userRouter';
 
 // Initialize Express application
